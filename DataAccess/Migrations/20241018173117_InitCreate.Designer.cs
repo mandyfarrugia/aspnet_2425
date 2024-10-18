@@ -12,7 +12,7 @@ using Presentation.Data;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20241018170319_InitCreate")]
+    [Migration("20241018173117_InitCreate")]
     partial class InitCreate
     {
         /// <inheritdoc />
