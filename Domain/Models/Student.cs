@@ -14,7 +14,7 @@ namespace Domain.Models
         //A string data type can hold textual, numeric, and alphanumerical data (for example, symbols).
         [Key] //The property IdNumber has been marked as a primary key attribute.
         public string IdNumber { get; set; } //Make sure to never omit the getters and setters otherwise no data will be available.
-        
+
         public string Name { get; set; }
 
         public string Surname { get; set; }

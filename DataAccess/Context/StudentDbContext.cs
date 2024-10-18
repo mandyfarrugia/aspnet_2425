@@ -14,8 +14,8 @@ namespace Presentation.Data
     public class StudentDbContext : IdentityDbContext //IdentityDbContext consists of tables related to authentication.
     {
         public StudentDbContext(DbContextOptions<StudentDbContext> options)
-            : base(options) {}
-        
+            : base(options) { }
+
         //Hold a reference to the model classes which will be mapped to their respective table counterparts by Entity Framework.
         public DbSet<Student> Students { get; set; }
         public DbSet<Group> Groups { get; set; }
