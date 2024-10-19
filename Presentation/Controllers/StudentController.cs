@@ -1,16 +1,19 @@
 ﻿using DataAccess.Repositories;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Models.ViewModels;
 
 namespace Presentation.Controllers
 {
     public class StudentController : Controller
     {
         private StudentsRepository StudentsRepository { get; }
+        private GroupsRepository GroupsRepository { get; }
 
-        public StudentController(StudentsRepository _studentsRepository)
+        public StudentController(StudentsRepository _studentsRepository, GroupsRepository _groupsRepository)
         {
             this.StudentsRepository = _studentsRepository;
+            this.GroupsRepository = _groupsRepository;
         }
 
         public IActionResult Index()
@@ -19,10 +22,11 @@ namespace Presentation.Controllers
             return View(students);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            Student student = new Student();
-            return View(student);
+            CreateStudentViewModel createStudentViewModel = new CreateStudentViewModel(this.GroupsRepository);
+            return View(createStudentViewModel);
         }
 
         public IActionResult Delete(string id)

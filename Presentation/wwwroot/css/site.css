@@ -32,6 +32,14 @@ body {
     margin-top: 2%;
 }
 
+.form-group {
+    margin-bottom: 3%;
+}
+
+.form-group > .btn.btn-primary {
+    margin-top: 2%;
+}
+
 /* Adding extra CSS code to make your elements more responsive on smaller devices such as phones/tablets, etc. */
 @media(max-width: 768px) {
     .card {

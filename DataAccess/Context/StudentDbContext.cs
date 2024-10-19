@@ -2,7 +2,7 @@ using Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Presentation.Data
+namespace DataAccess.Context
 {
     /// <summary>
     /// StudentDbContext is the gateway to the database.

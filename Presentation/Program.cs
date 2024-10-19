@@ -1,7 +1,7 @@
+using DataAccess.Context;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Presentation.Data;
 
 namespace Presentation
 {
@@ -22,6 +22,7 @@ namespace Presentation
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped(typeof(StudentsRepository));
+            builder.Services.AddScoped(typeof(GroupsRepository));
 
             var app = builder.Build();
 

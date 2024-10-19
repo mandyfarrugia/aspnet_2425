@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using Presentation.Data;
+﻿using DataAccess.Context;
+using Domain.Models;
 
 namespace DataAccess.Repositories
 {

@@ -14,33 +14,46 @@
 
 <h1>Students</h1>
 
-@foreach(Student student in Model)
+<div>
+    <a href="\Student\Create" class="btn btn-primary">Enroll New Student</a>
+</div>
+
+<!-- If no students are in the list (therefore Count is 0), display a message to indicate that no students are currently enrolled. Otherwise, traverse the list and display students' information. -->
+@if(Model.Count() == 0)
 {
-    <!-- mt denotes margin-top, whereas mb denotes margin-bottom. -->
-    <div class="card mt-2 mb-3">
-        <img src="https://placehold.co/600x400?text=@student.Name+@student.Surname" class="card-img-top" alt="@student.Name @student.Surname">
-        <div class="card-body">
-            <h5 class="card-title">@student.Name @student.Surname</h5>
-            <p class="card-text">
-                <span>ID Number: @student.IdNumber</span><br/> <!-- Use <br> to skip a line. -->
+    <div class="alert alert-warning">Unfortunately, there are no students enrolled at the moment.</div>
+} 
+else
+{
+    @foreach (Student student in Model)
+    {
+        <!-- mt denotes margin-top, whereas mb denotes margin-bottom. -->
+        <div class="card mt-2 mb-3">
+            <img src="https://placehold.co/600x400?text=@student.Name+@student.Surname" class="card-img-top" alt="@student.Name @student.Surname">
+            <div class="card-body">
+                <h5 class="card-title">@student.Name @student.Surname</h5>
+                <p class="card-text">
+                    <span>ID Number: @student.IdNumber</span><br /> <!-- Use <br> to skip a line. -->
+                    <!-- Since DateOfBirth has been declared as a nullable property,
+                        one must first check that the property is not null before referring to it to avoid NullReferenceException runtime errors.
+                    -->
+                    @if (student.DateOfBirth.HasValue)
+                    {
+                        <span>Birthdate: @student.DateOfBirth.Value.ToLongDateString()</span>
 
-                <!-- Since DateOfBirth has been declared as a nullable property,
-                    one must first check that the property is not null before referring to it to avoid NullReferenceException runtime errors.
-                -->
-                @if(student.DateOfBirth.HasValue)
-                {
-                    <span>Birthdate: @student.DateOfBirth.Value.ToLongDateString()</span><br/>
-                }
+                        <br />
+                    }
 
-                <span>Group: @student.Group.Code</span><br/>
-                <span>Programme: @student.Group.Programme</span>
-            </p>
-            <div class="button-group">
-                <a href="#" class="btn btn-primary">Edit Student</a>
-                <a href="#" class="btn btn-primary">Allocate Student to Group</a>
-                <a href="\Student\Delete\@student.IdNumber" class="btn btn-danger">Delete Student</a>
-                @* @Html.ActionLink("Delete", "Delete", new { id = student.IdNumber }, new { @class = "btn btn-danger" }) *@
+                    <span>Group: @student.Group.Code</span><br />
+                    <span>Programme: @student.Group.Programme</span>
+                </p>
+                <div class="button-group">
+                    <a href="#" class="btn btn-primary">Edit Student</a>
+                    <a href="#" class="btn btn-primary">Allocate Student to Group</a>
+                    <a href="\Student\Delete\@student.IdNumber" class="btn btn-danger">Delete Student</a>
+                    @* @Html.ActionLink("Delete", "Delete", new { id = student.IdNumber }, new { @class = "btn btn-danger" }) *@
+                </div>
             </div>
         </div>
-    </div>
+    }
 }

@@ -15,7 +15,7 @@ namespace DataAccess.Migrations
              * Furthermore, avoid hardcoding values especially with regards to foreign key values, use subqueries where necessary. */
             migrationBuilder.Sql("INSERT INTO dbo.Subjects (Code, [Name]) VALUES ('ITSFT-506-2011', 'Enterprise Programming'), ('ITSFT-506-2006', 'Object Oriented Programming');");
             migrationBuilder.Sql("INSERT INTO dbo.Groups (Code, Programme) VALUES ('IT-SWD-6.2A', 'Level 6 - BSc Software Development'), ('IT-SWD-6.1A', 'Level 6 - BSc Software Development');");
-            migrationBuilder.Sql("INSERT INTO dbo.Students (IdNumber, [Name], Surname, DateOfBirth, GroupFK) VALUES ('0473501L', 'Mandy', 'Farrugia', '2001-12-05', 'IT-SWD-6.2A'), ('0345802L', 'Joseph', 'Brincat', '2002-08-19', 'IT-SWD-6.1A')");
+            migrationBuilder.Sql("INSERT INTO dbo.Students (IdNumber, [Name], Surname, DateOfBirth, GroupFK) VALUES ('0473501L', 'Mandy', 'Farrugia', '2001-12-05', 'IT-SWD-6.2A'), ('0345802L', 'Joseph', 'Brincat', '2002-08-19', 'IT-SWD-6.1A');");
         }
 
         /// <inheritdoc />
