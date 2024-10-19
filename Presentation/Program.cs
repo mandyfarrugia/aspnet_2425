@@ -1,3 +1,4 @@
+using DataAccess.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Presentation.Data;
@@ -19,6 +20,8 @@ namespace Presentation
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<StudentDbContext>();
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped(typeof(StudentsRepository));
 
             var app = builder.Build();
 

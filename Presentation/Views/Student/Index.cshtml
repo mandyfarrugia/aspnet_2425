@@ -1,11 +1,34 @@
-﻿<!-- 
+﻿@using Domain.Models <!-- Let the compiler know where you are getting the model classes from. -->
+@model IEnumerable<Domain.Models.Student> <!-- Important to indicate what kind of model you intend to use, in the case a list of Student models. The Index action returns a View with a list of Student instances. -->
+
+<!-- 
     The view is what the user can see on their web browser.
     This is where the structure of the page takes place using HTML (and optionally, inline CSS for styling although there is an external CSS file within ./wwwroot/css/site.css).
     wwwroot is publically available for anyone accessing the webpage. Therefore, refrain from storing any sensitive data within as by default any content can be downloaded as well.
     You may also attach scripts to your .cshtml file.
 -->
 
-<h1>Hello World!</h1>
+<!-- Through Razor (.cshtml), you can use C# within HTML as you can in the case of PHP and HTML. Use the email/at symbol to Write C# code within HTML. -->
 
-<!-- Through Razor (.cshtml), you can use C# within HTML as you can in the case of PHP and HTML. -->
-<h2>@DateTime.Now.ToShortDateString()</h2>
+<h1>Students</h1>
+
+@foreach(Student student in Model)
+{
+    <!-- mt denotes margin-top, whereas mb denotes margin-bottom. -->
+    <div class="card mt-2 mb-3">
+        <img src="https://placehold.co/600x400?text=@student.Name+@student.Surname" class="card-img-top" alt="@student.Name @student.Surname">
+        <div class="card-body">
+            <h5 class="card-title">@student.Name @student.Surname</h5>
+            <p class="card-text">
+                ID Number: @student.IdNumber<br/> <!-- Use <br> to skip a line. -->
+                Group: @student.Group.Code<br/>
+                Programme: @student.Group.Programme
+            </p>
+            <div class="button-group">
+                <a href="#" class="btn btn-primary">Edit Student</a>
+                <a href="#" class="btn btn-primary">Allocate Student to Group</a>
+                <a href="#" class="btn btn-danger">Delete Student</a>
+            </div>
+        </div>
+    </div>
+}

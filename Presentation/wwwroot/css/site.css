@@ -20,3 +20,23 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.card {
+    display: inline-block; /* Prevent the card from taking up the entire block. Cards can be placed next to each other. */
+    width: 35%;
+    margin-right: 1%;
+}
+
+.button-group > .btn {
+    display: block;
+    margin-top: 2%;
+}
+
+/* Adding extra CSS code to make your elements more responsive on smaller devices such as phones/tablets, etc. */
+@media(max-width: 768px) {
+    .card {
+        display: block;
+        margin-top: 5% !important; /* Override the Bootstrap mt and mb properties. */
+        width: 100%;
+    }
+}
