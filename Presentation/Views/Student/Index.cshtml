@@ -1,5 +1,7 @@
 ﻿@using Domain.Models <!-- Let the compiler know where you are getting the model classes from. -->
-@model IEnumerable<Domain.Models.Student> <!-- Important to indicate what kind of model you intend to use, in the case a list of Student models. The Index action returns a View with a list of Student instances. -->
+
+<!-- Important to indicate what kind of model you intend to use, in the case a list of Student models. The Index action returns a View with a list of Student instances. -->
+@model IEnumerable<Domain.Models.Student> 
 
 <!-- 
     The view is what the user can see on their web browser.
@@ -20,14 +22,24 @@
         <div class="card-body">
             <h5 class="card-title">@student.Name @student.Surname</h5>
             <p class="card-text">
-                ID Number: @student.IdNumber<br/> <!-- Use <br> to skip a line. -->
-                Group: @student.Group.Code<br/>
-                Programme: @student.Group.Programme
+                <span>ID Number: @student.IdNumber</span><br/> <!-- Use <br> to skip a line. -->
+
+                <!-- Since DateOfBirth has been declared as a nullable property,
+                    one must first check that the property is not null before referring to it to avoid NullReferenceException runtime errors.
+                -->
+                @if(student.DateOfBirth.HasValue)
+                {
+                    <span>Birthdate: @student.DateOfBirth.Value.ToLongDateString()</span><br/>
+                }
+
+                <span>Group: @student.Group.Code</span><br/>
+                <span>Programme: @student.Group.Programme</span>
             </p>
             <div class="button-group">
                 <a href="#" class="btn btn-primary">Edit Student</a>
                 <a href="#" class="btn btn-primary">Allocate Student to Group</a>
-                <a href="#" class="btn btn-danger">Delete Student</a>
+                <a href="\Student\Delete\@student.IdNumber" class="btn btn-danger">Delete Student</a>
+                @* @Html.ActionLink("Delete", "Delete", new { id = student.IdNumber }, new { @class = "btn btn-danger" }) *@
             </div>
         </div>
     </div>

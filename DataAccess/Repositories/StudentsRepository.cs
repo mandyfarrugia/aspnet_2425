@@ -62,6 +62,10 @@ namespace DataAccess.Repositories
                 this.Context.Students.Remove(studentToDelete);
                 this.Context.SaveChanges();
             }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
 }
